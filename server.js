@@ -1,9 +1,14 @@
 require('dotenv').config();
 const express = require('express');
 const path = require('path');
-const { reachDB } = require('./pool/db');
+const { db } = require('./pool/db');
 
-reachDB
+const fill = require('./seeders/item_seed.js')
+
+fill
+
+
+
 
 
 

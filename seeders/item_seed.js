@@ -1,15 +1,6 @@
-const {Sequelize} = require('sequelize');
 const Item = require('../models/item');
-//const db = require('../pool/db')
+const {db} = require('../pool/db')
 const {faker} = require('@faker-js/faker');
-const {reachDB} = require('../pool/db')
-
-
-const db = new Sequelize(process.env.DB, process.env.DB_USER, process.env.PW, {
-    host: process.env.HOST,
-    dialect: 'postgres'
-    
-})
 
 
 const createItem = () => {
@@ -22,10 +13,19 @@ const createItem = () => {
     }
 }
 
-/* const getItems =  */(async () => {
-    reachDB
-    await db.sync();
-    await Item.bulkCreate(new Array(20).fill().map(i => createItem))
-    //await db.close()
-})();
+const equip = async() => {
+    try{
+    await Item.sync()
+    .then(Item.bulkCreate(new Array(20).fill().map(i => createItem)))
+    }
+    catch (err){
+        console.log("Error de conexión; ", err);
+    }
+    finally{
+        db.close();
+        console.log("Éxito");
+    }
+}
+
+module.export = equip;
 
