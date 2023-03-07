@@ -1,3 +1,4 @@
+require('dotenv').config();
 const Item = require('../models/item');
 const {db} = require('../pool/db')
 const {faker} = require('@faker-js/faker');
@@ -15,8 +16,8 @@ const createItem = () => {
 
 const equip = async() => {
     try{
-    await Item.sync()
-    .then(Item.bulkCreate(new Array(20).fill().map(i => createItem)))
+    await Item.sync({force:true})
+        .then(() => { Item.bulkCreate(new Array(20).fill().map(i => createItem())) })
     }
     catch (err){
         console.log("Error de conexión; ", err);
@@ -27,5 +28,7 @@ const equip = async() => {
     }
 }
 
-module.export = equip;
+equip()
+
+module.export = { createItem, equip };
 
