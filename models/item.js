@@ -1,29 +1,27 @@
-const {  Sequelize, DataTypes } = require('sequelize');
-const {db} = require('../pool/db');
+const {  Sequelize, DataTypes, ARRAY } = require('sequelize');
+const {db} = require('../utils/sequelize');
+const { RandomModule } = require('@faker-js/faker');
 
 const Item = db.define("Item", {
   _id: {
     type: DataTypes.UUID,
-    allowNull: false
+    allowNull: false,
+    primaryKey:true
   },
-  itemName: {
+   itemName: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
   },
   price: {
     type: DataTypes.INTEGER,
     allowNull: false
   },
   rating: {
-    type: DataTypes.DECIMAL(10,2),
+    type: DataTypes.DECIMAL(10,1),
     allowNull: false
   },
-  maker: {
-    type: DataTypes.INTEGER,
-    allowNull: false
-  }
 }, {
-  timestamps: false
+  timestamps: false,
 });
 
 module.exports = Item
