@@ -1,6 +1,6 @@
 require('dotenv').config();
 const Maker = require('../models/maker');
-const { db } = require('../pool/db')
+const { db } = require('../utils/sequelize')
 const { faker } = require('@faker-js/faker');
 
 
@@ -16,8 +16,8 @@ const createMaker = () => {
 
 const fillMakers = async () => {
     try {
-        await Maker.sync({ force: true })
-            .then(() => { Maker.bulkCreate(new Array(6).fill('').map(i => createMaker())) })
+        await Maker.sync({ alter : true })
+            .then(() => { Maker.bulkCreate(new Array(6).fill('').map(i => createMaker())),{ignoreDuplicates: true} })
     }
     catch (err) {
         console.log("Error de conexión; ", err);
