@@ -1,8 +1,8 @@
-const {Product} = require('../models')
+const {Product, Maker} = require('../models')
 
 const getItems = async (req, res) => {
     try {
-        let items = await Product.findAll();
+        let items = await Product.findAll({include: Maker});
         return res.status(200).send(items)
     }
     catch (err) {
