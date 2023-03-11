@@ -1,11 +1,11 @@
 import React from "react";
 
 const Card = (props) => {
-  return <div className="itemCard">
+  return <div className="rpg-box">
       <h2>{props.item.itemName}</h2>
       <p>Price: {props.item.price}</p>
       <p>Rating: {props.item.rating}</p>
-      <button >DETAILS</button>
+      <button className="rpg-button" >DETAILS</button>
       { <div className="makerData">
         <p>Manufactured by: {props.item.Maker.makerName}</p>
         <p>Address: {props.item.Maker.address}</p>
