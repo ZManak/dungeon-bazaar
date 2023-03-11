@@ -10,7 +10,7 @@ const Card = (props) => {
       <h4>{props.item.itemName}</h4>
       <p>Price: {props.item.price}</p>
       <p>Rating: {props.item.rating}</p>
-      <button className="rpg-button" onClick={collapse}>DETAILS</button>
+      <button className="rpg-button" onClick={collapse}>Manufacturer Details</button>
       {collapsed ? <div className="makerData">
         <p>Manufactured by: {props.item.Maker.makerName}</p>
         <p>Address: {props.item.Maker.address}</p>
