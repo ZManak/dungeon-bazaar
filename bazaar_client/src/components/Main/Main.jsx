@@ -8,8 +8,8 @@ import CardList from "./Grid/CardList/CardList";
 const Main = () => {
   const [items, setItems] = useState([{Maker:{address:"", cif: null, makerName:""}, id:null, itemName:"", makerId:null, price:null, rating:""}])
 
-  const collapseInfo = () => {
-  
+  const orderByName = () => {
+    
   }
   useEffect(() => {
     const getItems = async () => {
