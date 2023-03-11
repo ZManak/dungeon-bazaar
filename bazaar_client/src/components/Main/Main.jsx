@@ -26,6 +26,12 @@ const Main = () => {
 
   return <main>
     <h1>Main</h1>
+    <h4>Order by:</h4>
+    <section className="orderButtons">
+      <button>NAME</button>
+      <button>RATING</button>
+      <button>PRICE</button>
+    </section>
     <section className="mainItems">
       <CardList data={items}></CardList>
     </section>

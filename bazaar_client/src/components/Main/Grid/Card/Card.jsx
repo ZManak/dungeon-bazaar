@@ -1,8 +1,8 @@
 import React from "react";
 
 const Card = (props) => {
-  return <div className="rpg-box">
-      <h2>{props.item.itemName}</h2>
+  return <div className="card">
+      <h4>{props.item.itemName}</h4>
       <p>Price: {props.item.price}</p>
       <p>Rating: {props.item.rating}</p>
       <button className="rpg-button" >DETAILS</button>
