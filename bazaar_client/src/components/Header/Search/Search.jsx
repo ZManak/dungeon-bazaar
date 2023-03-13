@@ -2,7 +2,7 @@ import React from "react";
 
 const Search = () => {
   return <form>
-    <input type="text" placeholder="Search..."/>
+    <input className="pixel-border" type="text" placeholder="Search..."/>
   </form>;
 };
 

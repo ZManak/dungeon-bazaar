@@ -42,7 +42,7 @@ const Main = () => {
 },[]);
 
   return <main>
-    <h1>Main</h1>
+    <h2>Awesome Item Stock</h2>
     <h4>Order by:</h4>
     <section className="orderButtons">
       <AwesomeButton onPress={orderByName}>NAME</AwesomeButton>

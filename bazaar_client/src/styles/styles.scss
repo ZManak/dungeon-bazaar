@@ -1,6 +1,9 @@
+@import "node_modules/rpg-awesome/scss/rpg-awesome";
+@import './components/Header';
 @import './components/Main';
 @import './components/Card';
 @import './components/CardList';
 @import './elements/buttons';
 @import './elements/borders';
+@import './elements/input';
 @import './views/App';

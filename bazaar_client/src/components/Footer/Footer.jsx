@@ -1,7 +1,7 @@
 import React from "react";
 
 const Footer = () => {
-  return <div>Footer</div>;
+  return <footer>Pixel borders by @fallwestmike</footer>;
 };
 
 export default Footer;
