@@ -7,11 +7,11 @@ const Card = (props) => {
     !collapsed ? setCollapsed(true) :
     setCollapsed(false)
   }
-  return <div className="card">
+  return <div className="pixel-border">
       <h4>{props.item.itemName}</h4>
       <p>Price: {props.item.price}</p>
       <p>Rating: {props.item.rating}</p>
-      <button className="rpg-button" onClick={collapse}>Manufacturer Details</button>
+      <AwesomeButton onPress={collapse}>Manufacturer Details</AwesomeButton>
       {collapsed ? <div className="makerData">
         <p>Manufactured by: {props.item.Maker.makerName}</p>
         <p>Address: {props.item.Maker.address}</p>

@@ -3,6 +3,7 @@ import React, {useEffect, useState} from "react";
 import { Routes,Route } from "react-router-dom";
 import {v4 as uuidv4} from 'uuid';
 import CardList from "./Grid/CardList/CardList";
+import { AwesomeButton } from "react-awesome-button";
 
 
 const Main = () => {
@@ -44,9 +45,9 @@ const Main = () => {
     <h1>Main</h1>
     <h4>Order by:</h4>
     <section className="orderButtons">
-      <button onClick={orderByName}>NAME</button>
-      <button>RATING</button>
-      <button>PRICE</button>
+      <AwesomeButton onPress={orderByName}>NAME</AwesomeButton>
+      <AwesomeButton >RATING</AwesomeButton>
+      <AwesomeButton >PRICE</AwesomeButton>
     </section>
     <section className="mainItems">
       <CardList data={items}></CardList>
