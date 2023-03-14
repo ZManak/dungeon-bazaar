@@ -1,9 +1,17 @@
 main{
     padding: 15px 50px 50px 50px;
+    background-image: url('../../../public/assets/images/prev_25.png');
+    background-size: contain;
+    
 }
 
 main>h4{
     margin-bottom: 5px;
+}
+
+.title {
+    color: whitesmoke;
+    text-shadow: 2px 2px 3px black;
 }
 
 .orderButtons {

@@ -1,13 +1,15 @@
 input {
     font-family: monospace;
-    font-size: large;
+    font-size: small;
     border-top-style: hidden;
     border-right-style: hidden;
     border-left-style: hidden;
     border-bottom-style: hidden;
     background-color: #eee;
+    
   }
 
   input:focus{
-    outline: none;
+    outline-style: ridge;
+    outline: hidden;
   }

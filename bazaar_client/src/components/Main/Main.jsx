@@ -42,8 +42,10 @@ const Main = () => {
 },[]);
 
   return <main>
+    <div className="title">
     <h2>Awesome Item Stock</h2>
     <h4>Order by:</h4>
+    </div>
     <section className="orderButtons">
       <AwesomeButton onPress={orderByName}>NAME</AwesomeButton>
       <AwesomeButton >RATING</AwesomeButton>
