@@ -1,8 +1,24 @@
 @import url("https://fonts.googleapis.com/css?family=Press+Start+2P");
+@font-face {
+  font-family: 'Alagard';
+  src: url('../../../public/assets/fonts/Alagard.woff2') format('woff2'),
+      url('../../../public/assets/fonts/Alagard.woff') format('woff');
+  font-weight:bolder;
+  font-style: normal;
+  font-display: swap;
+}
 .App {
   text-align: center;
-  font-family: 'Press Start 2P';
-}
+  font-family: 'Alagard';
+  font-size: x-large;
+}  
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    place-content: center;
+ }
+  
 
 .App-logo {
   height: 40vmin;

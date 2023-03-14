@@ -1,0 +1,10 @@
+@import 'react-awesome-button/src/styles/styles.scss';
+button{
+    font-size: larger;
+    font-weight: 700;
+    -webkit-text-stroke: true;
+    -webkit-text-stroke-width: 0.01px;
+    -webkit-text-stroke-color: rgb(255, 227, 190);
+    width: fit-content;
+    padding: 20px;
+}

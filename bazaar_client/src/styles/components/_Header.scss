@@ -1,0 +1,22 @@
+header{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    @include pixel-borders($border-color:#A020F0);
+}
+
+header>img{
+    height: 180px;
+    width: 300px;
+    //margin-right: -100px;
+}
+
+#reverse{
+    transform: rotateY(3.142rad);
+    margin-left: -100px;
+}
