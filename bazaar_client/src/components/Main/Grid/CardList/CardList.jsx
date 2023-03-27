@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+/* import React, { useEffect, useState } from "react";
 import Card from "../Card/Card";
 import { v4 as uuidv4 } from "uuid";
 import { AwesomeButton } from "react-awesome-button";
+
 
 const CardList = (props) => {
   const items = props.data;
@@ -38,7 +39,7 @@ const CardList = (props) => {
             </div>
         </div> */
 
-  const printCards = () => {
+/*const printCards = () => {
     <section className="cardList">
       {items.map((item) => (
         <Card item={item} key={uuidv4} />
@@ -48,4 +49,22 @@ const CardList = (props) => {
 
   return <div>{printCards()}</div>;
 };
+export default CardList;
+ */
+
+import React from "react";
+import Card from "../Card/Card";
+import { v4 as uuidv4 } from "uuid";
+
+const CardList = (props) => {
+  const printCards = () => (
+    <section className="cardList">
+      {props.data.map((item) => (
+        <Card item={item} key={uuidv4} />
+      ))}
+    </section>
+  );
+  return <div>{printCards()}</div>;
+};
+
 export default CardList;
