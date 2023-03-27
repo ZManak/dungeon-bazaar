@@ -39,7 +39,6 @@
     "sequelize-cli": "^6.6.0"
   },
   "dependencies": {
-    "adminjs": "^6.8.7",
     "concurrently": "^7.6.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
@@ -49,7 +48,6 @@
     "node": "^19.6.1",
     "pg": "^8.9.0",
     "sequelize": "^6.29.0",
-    "uuid": "^9.0.0",
-    "yarn": "^1.22.19"
+    "uuid": "^9.0.0"
   }
 }
