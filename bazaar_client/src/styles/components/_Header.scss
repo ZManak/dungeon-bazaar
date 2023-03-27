@@ -7,7 +7,13 @@ header{
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
-    @include pixel-borders($border-color:#A020F0);
+    background-image: url('../../../public/assets/images/Screenshot\ 2023-03-15\ 101643.png');
+    background-size:contain;
+    @include pixel-borders($border-color:#653b16);
+}
+
+.headerTitle > h1:nth-child(1){
+    color: bisque;
 }
 
 header>img{
