@@ -10,9 +10,25 @@ main>h4{
 }
 
 .title {
-    color: whitesmoke;
-    text-shadow: 2px 2px 3px black;
+    color: burlywood;
+    //text-shadow: 3px 5px 0px rgb(82, 20, 158);
+    -webkit-animation: glow 1s ease-in-out infinite alternate;
+    -moz-animation: glow 1s ease-in-out infinite alternate;
+    animation: glow 1s ease-in-out infinite alternate;
+    -webkit-text-stroke:true;
+    -webkit-text-stroke-color: #184547;
+    -webkit-text-stroke-width: 1px;
 }
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 2px #fff, 0 0 8px #fff, 0 0 15px #e60073, 0 0 20px #e60073, 0 0 30px #e60073, 0 0 35px #e60073, 0 0 40px #e60073;
+  }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 7px #4dff5f, 0 0 16px #0d8577, 0 0 22px #184547, 0 0 33px #ff4da6, 0 0 32px #ff4da6, 0 0 40px #ff4da6;
+  }
+}
+
 
 .orderButtons {
     padding: 0px 20px 20px 20px;
