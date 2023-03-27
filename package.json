@@ -8,7 +8,7 @@
     "start": "node server.js",
     "server": "nodemon server.js",
     "client": "npm start --prefix bazaar_client",
-    "clientinstall": "npm install --prefix client",
+    "clientinstall": "npm install --prefix bazaar_client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "deploy": "concurrently \"npm run server\" \"npm run client\"",
     "render-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
@@ -35,12 +35,12 @@
   "devDependencies": {
     "@faker-js/faker": "^7.6.0",
     "babel-register": "^6.26.0",
-    "concurrently": "^7.6.0",
     "nodemon": "^2.0.21",
     "sequelize-cli": "^6.6.0"
   },
   "dependencies": {
     "adminjs": "^6.8.7",
+    "concurrently": "^7.6.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "dotenv-cli": "^7.0.0",
