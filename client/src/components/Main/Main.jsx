@@ -65,12 +65,13 @@ const Main = () => {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     const currentItems = items.slice(startIndex, endIndex);
-    currentItems.map((item) => <Card item={item} key={item.id} />);
+    console.log(currentItems);
+    return currentItems;
   };
 
-  const printCards = () => {
+  /* const printCards = () => {
     paginate().map((item) => <Card item={item} key={item.id} />);
-  };
+  }; */
 
   useEffect(() => {
     const getItems = async () => {
@@ -96,7 +97,11 @@ const Main = () => {
         <AwesomeButton onPress={orderByRating}>RATING</AwesomeButton>
         <AwesomeButton onPress={orderByPrice}>PRICE</AwesomeButton>
       </section>
-      <section className="cardList">{paginate()}</section>
+      <section className="cardList">
+        {paginate().map((item) => (
+          <Card item={item} key={item.id}></Card>
+        ))}
+      </section>
       <section className="paginateButtons">
         <AwesomeButton
           onPress={() => {
