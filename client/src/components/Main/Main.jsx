@@ -24,7 +24,7 @@ const Main = () => {
   const orderByName = async () => {
     if (toogleName) {
       try {
-        const res = await axios.get("http://localhost:3000/api/nameAsc");
+        const res = await axios.get("/api/nameAsc");
         const items = res.data;
         setItems(items);
       } catch (err) {
@@ -32,7 +32,7 @@ const Main = () => {
       }
     } else {
       try {
-        const res = await axios.get("http://localhost:3000/api/nameDesc");
+        const res = await axios.get("/api/nameDesc");
         const items = res.data;
         setItems(items);
       } catch (err) {
@@ -74,7 +74,7 @@ const Main = () => {
   useEffect(() => {
     const getItems = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/api");
+        const res = await axios.get("/api");
         const items = res.data;
         setItems(items);
       } catch (err) {
