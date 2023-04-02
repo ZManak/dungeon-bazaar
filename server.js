@@ -5,7 +5,7 @@ const path = require("path");
 const cors = require("cors");
 const fetchRandomEquipment = require("./wip-fetch/item_dd.js");
 
-const itemRoutes = require("/routes/productsRoutes");
+const itemRoutes = require("./routes/productsRoutes");
 
 const app = express();
 const port = 3000;
