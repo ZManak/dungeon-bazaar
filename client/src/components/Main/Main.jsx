@@ -68,8 +68,9 @@ const Main = () => {
     return currentItems;
   };
 
-  const printCards = () =>
+  const printCards = () => {
     paginate().map((item) => <Card item={item} key={item.id} />);
+  };
 
   useEffect(() => {
     const getItems = async () => {
