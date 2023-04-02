@@ -65,7 +65,7 @@ const Main = () => {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     const currentItems = items.slice(startIndex, endIndex);
-    return currentItems;
+    currentItems.map((item) => <Card item={item} key={item.id} />);
   };
 
   const printCards = () => {
@@ -96,7 +96,7 @@ const Main = () => {
         <AwesomeButton onPress={orderByRating}>RATING</AwesomeButton>
         <AwesomeButton onPress={orderByPrice}>PRICE</AwesomeButton>
       </section>
-      <section className="cardList">{printCards()}</section>
+      <section className="cardList">{paginate()}</section>
       <section className="paginateButtons">
         <AwesomeButton
           onPress={() => {
