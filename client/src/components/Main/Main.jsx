@@ -48,7 +48,7 @@ const Main = () => {
     if (tooglePrice) {
       setItems(items.sort((a, b) => a.price > b.price));
     } else {
-      seItems(items.sort((a, b) => a.price < b.price));
+      setItems(items.sort((a, b) => a.price < b.price));
     }
     tooglePrice ? setPrice(false) : setPrice(true);
   };
