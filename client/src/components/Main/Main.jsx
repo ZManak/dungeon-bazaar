@@ -4,16 +4,8 @@ import Card from "./Grid/Card/Card";
 import { AwesomeButton } from "react-awesome-button";
 
 const Main = () => {
-  const [items, setItems] = useState([
-    {
-      Maker: { address: "", cif: null, makerName: "" },
-      id: null,
-      itemName: "",
-      makerId: null,
-      price: null,
-      rating: "",
-    },
-  ]);
+  const [items, setItems] = useState([])
+ 
   const [toogleName, setName] = useState(false);
   const [toogleRating, setRating] = useState(false);
   const [tooglePrice, setPrice] = useState(false);
@@ -54,9 +46,9 @@ const Main = () => {
 
   const orderByPrice = () => {
     if (tooglePrice) {
-      items.sort((a, b) => a.price > b.price);
+      setItems(items.sort((a, b) => a.price > b.price));
     } else {
-      items.sort((a, b) => a.price < b.price);
+      setItems(items.sort((a, b) => a.price < b.price));
     }
     tooglePrice ? setPrice(false) : setPrice(true);
   };
@@ -99,9 +91,14 @@ const Main = () => {
         <AwesomeButton onPress={orderByPrice}>PRICE</AwesomeButton>
       </section>
       <section className="cardList">
+<<<<<<< HEAD
         {paginate().map((item) => (
           <Card item={item} key={item.id}></Card>
         ))}
+=======
+          {paginate().map((item) => <Card item={item} key={item.id}></Card>)}
+         
+>>>>>>> 971e88f73f31cc4944e1907c927789172b594a20
       </section>
       <section className="paginateButtons">
         <AwesomeButton
