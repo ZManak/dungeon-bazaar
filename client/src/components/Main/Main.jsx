@@ -4,16 +4,8 @@ import Card from "./Grid/Card/Card";
 import { AwesomeButton } from "react-awesome-button";
 
 const Main = () => {
-  const [items, setItems] = useState([
-    {
-      Maker: { address: "", cif: null, makerName: "" },
-      id: null,
-      itemName: "",
-      makerId: null,
-      price: null,
-      rating: "",
-    },
-  ]);
+  const [items, setItems] = useState([])
+ 
   const [toogleName, setName] = useState(false);
   const [toogleRating, setRating] = useState(false);
   const [tooglePrice, setPrice] = useState(false);
@@ -42,7 +34,7 @@ const Main = () => {
     toogleName ? setName(false) : setName(true);
   };
 
-  const orderByRating = () => {
+  const orderByRating = () =>
     if (toogleRating) {
       let ascRating = items.sort((a, b) => a.rating > b.rating);
       setItems(ascRating);
@@ -54,9 +46,9 @@ const Main = () => {
 
   const orderByPrice = () => {
     if (tooglePrice) {
-      items.sort((a, b) => a.price > b.price);
+      setItems(items.sort((a, b) => a.price > b.price));
     } else {
-      items.sort((a, b) => a.price < b.price);
+      seItems(items.sort((a, b) => a.price < b.price));
     }
     tooglePrice ? setPrice(false) : setPrice(true);
   };
