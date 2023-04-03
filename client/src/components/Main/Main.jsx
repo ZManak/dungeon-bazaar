@@ -76,8 +76,9 @@ const Main = () => {
   useEffect(() => {
     const getItems = async () => {
       try {
-        const res = await axios.get("/api");
+        const res = await axios.get("./api");
         const items = res.data;
+        console.log(items);
         setItems(items);
       } catch (err) {
         console.log(err);
@@ -98,8 +99,9 @@ const Main = () => {
         <AwesomeButton onPress={orderByPrice}>PRICE</AwesomeButton>
       </section>
       <section className="cardList">
-        {items > 1 &&
-          paginate().map((item) => <Card item={item} key={item.id}></Card>)}
+        {paginate().map((item) => (
+          <Card item={item} key={item.id}></Card>
+        ))}
       </section>
       <section className="paginateButtons">
         <AwesomeButton
