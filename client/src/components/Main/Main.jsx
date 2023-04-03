@@ -68,7 +68,7 @@ const Main = () => {
   useEffect(() => {
     const getItems = async () => {
       try {
-        const res = await axios.get("./api");
+        const res = await axios.get("/api");
         const items = res.data;
         console.log(items);
         setItems(items);
