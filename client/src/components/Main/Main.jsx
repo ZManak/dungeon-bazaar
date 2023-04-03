@@ -98,8 +98,8 @@ const Main = () => {
         <AwesomeButton onPress={orderByPrice}>PRICE</AwesomeButton>
       </section>
       <section className="cardList">
-        {items > 1 &&
-          paginate().map((item) => <Card item={item} key={item.id}></Card>)}
+          {paginate().map((item) => <Card item={item} key={item.id}></Card>)}
+         
       </section>
       <section className="paginateButtons">
         <AwesomeButton
