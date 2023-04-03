@@ -4,8 +4,8 @@ import Card from "./Grid/Card/Card";
 import { AwesomeButton } from "react-awesome-button";
 
 const Main = () => {
-  const [items, setItems] = useState([])
- 
+  const [items, setItems] = useState([]);
+
   const [toogleName, setName] = useState(false);
   const [toogleRating, setRating] = useState(false);
   const [tooglePrice, setPrice] = useState(false);
@@ -91,14 +91,9 @@ const Main = () => {
         <AwesomeButton onPress={orderByPrice}>PRICE</AwesomeButton>
       </section>
       <section className="cardList">
-<<<<<<< HEAD
         {paginate().map((item) => (
           <Card item={item} key={item.id}></Card>
         ))}
-=======
-          {paginate().map((item) => <Card item={item} key={item.id}></Card>)}
-         
->>>>>>> 971e88f73f31cc4944e1907c927789172b594a20
       </section>
       <section className="paginateButtons">
         <AwesomeButton
