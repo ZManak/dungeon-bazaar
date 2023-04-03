@@ -34,9 +34,9 @@ const Main = () => {
     toogleName ? setName(false) : setName(true);
   };
 
-  const orderByRating = () =>
+  const orderByRating = () => {
     if (toogleRating) {
-      let ascRating = items.sort((a, b) => a.rating > b.rating));
+      let ascRating = items.sort((a, b) => a.rating > b.rating);
       setItems(ascRating);
     } else {
       setItems(items.sort((a, b) => a.rating < b.rating));
