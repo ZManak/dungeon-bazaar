@@ -11,6 +11,8 @@ const app = express();
 const port = 3000;
 app.use(morgan("dev"));
 app.use(cors());
+app.use(express.json()); // Habilitar tipo de dato a recibir
+app.use(express.urlencoded({ extended: true }));
 
 app.use("/api", itemRoutes);
 
