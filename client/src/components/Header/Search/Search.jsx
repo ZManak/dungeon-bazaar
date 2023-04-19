@@ -8,9 +8,10 @@ const Search = () => {
   const handleSubmit = () => {
     setTimeout(() => {
       setInput(inputText.current.value);
-    }, 4000);
-    console.log(input);
+ console.log(input);
     const item = axios.get(`/api/search/${input}`);
+    }, 4000);
+   
   };
 
   return (
