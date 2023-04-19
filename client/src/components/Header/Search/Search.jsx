@@ -1,28 +1,37 @@
 import axios from "axios";
 import React, { useRef, useState } from "react";
+import { searchContext } from "../../../context/searchContext";
+import { AwesomeButton, AwesomeButtonProgress } from "react-awesome-button";
 
 const Search = () => {
+  const { search, setSearch } = React.useContext(searchContext);
   const [input, setInput] = useState("");
-  const inputText = useRef();
+  let inputText = useRef();
 
   const handleSubmit = () => {
-    setTimeout(() => {
-      setInput(inputText.current.value);
- console.log(input);
-    const item = axios.get(`/api/search/${input}`);
-    }, 4000);
-   
+    //e.preventDefault();
+    setSearch(inputText.current.value);
+    console.log(search);
+
   };
 
   return (
-    <div>
+    <div className="searchBar">
       <input
         className="pixel-border"
         type="text"
         placeholder="Search deals..."
         ref={inputText}
-        onChange={handleSubmit}
       />
+      <AwesomeButton onPress={handleSubmit}>Search</AwesomeButton>
+      <AwesomeButton
+        onPress={() => {
+          inputText.current.value = "";
+          setSearch("");
+        }}
+      >
+        Clear
+      </AwesomeButton>
     </div>
   );
 };

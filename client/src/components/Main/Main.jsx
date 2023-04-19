@@ -2,8 +2,10 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Card from "./Grid/Card/Card";
 import { AwesomeButton } from "react-awesome-button";
+import { searchContext } from "../../context/searchContext";
 
 const Main = () => {
+  const { search } = React.useContext(searchContext);
   const [items, setItems] = useState([]);
 
   const [toogleName, setName] = useState(false);
@@ -12,6 +14,27 @@ const Main = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const itemsPerPage = 5;
+
+  const searchItems = () => {
+    if (search === "") {
+      const getItems = async () => {
+        try {
+          const res = await axios.get("/api");
+          const items = res.data;
+          console.log(items);
+          setItems(items);
+        } catch (err) {
+          console.log(err);
+        }
+      };
+      getItems();
+    } else if (search !== "") {
+      const filtereditem = items.filter((item) => {
+        return item.itemName.toLowerCase().includes(search.toLowerCase());
+      });
+      setItems(filtereditem);
+    }
+  };
 
   const orderByName = async () => {
     if (toogleName) {
@@ -67,17 +90,27 @@ const Main = () => {
 
   useEffect(() => {
     const getItems = async () => {
-      try {
-        const res = await axios.get("/api");
-        const items = res.data;
-        console.log(items);
-        setItems(items);
-      } catch (err) {
-        console.log(err);
+      if (search !== "") {
+        try {
+          const res = await axios.get("/api/search/" + search);
+          const items = res.data;
+          setItems(items);
+        } catch (err) {
+          console.log(err);
+        }
+      } else {
+        try {
+          const res = await axios.get("/api");
+          const items = res.data;
+          console.log(items);
+          setItems(items);
+        } catch (err) {
+          console.log(err);
+        }
       }
     };
     getItems();
-  }, []);
+  }, [search]);
 
   return (
     <main>
@@ -97,6 +130,8 @@ const Main = () => {
       </section>
       <section className="paginateButtons">
         <AwesomeButton
+          type="danger"
+          size="medium"
           onPress={() => {
             if (currentPage > 1) {
               setCurrentPage(currentPage - 1);
@@ -106,6 +141,8 @@ const Main = () => {
           prev
         </AwesomeButton>
         <AwesomeButton
+          type="danger"
+          size="medium"
           onPress={() => {
             let pages = Math.ceil(items.length / itemsPerPage);
             if (currentPage < pages) {
