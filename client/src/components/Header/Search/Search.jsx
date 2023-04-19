@@ -12,6 +12,7 @@ const Search = () => {
     //e.preventDefault();
     setSearch(inputText.current.value);
     console.log(search);
+
   };
 
   return (
