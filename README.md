@@ -46,7 +46,7 @@ You are set to go. You can either `npm run dev` to concurrently run server and c
 
 # To Do's
 - [x] Database & fetch, React front
-- [ ] Finish sorting and search by fields
+- [x] Finish sorting and search by fields
 - [ ] Add a shopping cart.
 - [ ] Fix random generated icons - either client side or by designation at the Database.
 - [ ] Actually set an inventory of coherent items (no silly faker names). Working on fetching 1st quality gear from Dungeons & Dragons API.
