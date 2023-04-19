@@ -11,22 +11,22 @@ const app = express();
 const port = 3000;
 app.use(morgan("dev"));
 app.use(cors());
-
-if (process.env.NODE_ENV === "production") {
-  //*Set static folder up in production
-  app.use(express.static("bazaar_client/build"));
-
-  app.get("*", (req, res) =>
-    res.sendFile(
-      path.resolve(__dirname, "bazaar_client", "build", "index.html")
-    )
-  );
-}
+app.use(express.json()); // Habilitar tipo de dato a recibir
+app.use(express.urlencoded({ extended: true }));
 
 app.use("/api", itemRoutes);
 
 //fetchRandomEquipment().then(console.log);
 
+if (process.env.NODE_ENV === "production") {
+  //*Set static folder up in production
+  app.use(express.static("client/build"));
+
+  app.get("*", (req, res) =>
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"))
+  );
+}
+
 app.listen(port, () => {
-  console.log(`server running on http://localhost:${port}`);
+  console.log(`server running`);
 });

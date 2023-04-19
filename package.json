@@ -7,12 +7,13 @@
   "scripts": {
     "start": "node server.js",
     "server": "nodemon server.js",
-    "client": "npm start --prefix bazaar_client",
-    "clientinstall": "npm install --prefix bazaar_client",
-    "dev": "concurrently \"npm run start\" \"npm run client\"",
-    "deploy": "concurrently \"npm run start\" \"npm run client\"",
+    "client": "npm start --prefix client",
+    "clientinstall": "npm install --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "deploy": "concurrently \"npm run server\" \"npm run client\"",
     "render-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
-    "seeds": "set NODE_ENV=development && (node ./seeders/item_seed.js && node ./seeders/maker_seed.js)"
+    "seeds": "set NODE_ENV=development && (node ./seeders/item_seed.js && node ./seeders/maker_seed.js)",
+    "local":"concurrently \"npm run server\" \"set PORT=5000 && npm run client\""
   },
   "repository": {
     "type": "git",

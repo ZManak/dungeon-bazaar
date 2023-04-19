@@ -2,18 +2,12 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Card from "./Grid/Card/Card";
 import { AwesomeButton } from "react-awesome-button";
+import { searchContext } from "../../context/searchContext";
 
 const Main = () => {
-  const [items, setItems] = useState([
-    {
-      Maker: { address: "", cif: null, makerName: "" },
-      id: null,
-      itemName: "",
-      makerId: null,
-      price: null,
-      rating: "",
-    },
-  ]);
+  const { search } = React.useContext(searchContext);
+  const [items, setItems] = useState([]);
+
   const [toogleName, setName] = useState(false);
   const [toogleRating, setRating] = useState(false);
   const [tooglePrice, setPrice] = useState(false);
@@ -21,10 +15,31 @@ const Main = () => {
 
   const itemsPerPage = 5;
 
+  const searchItems = () => {
+    if (search === "") {
+      const getItems = async () => {
+        try {
+          const res = await axios.get("/api");
+          const items = res.data;
+          console.log(items);
+          setItems(items);
+        } catch (err) {
+          console.log(err);
+        }
+      };
+      getItems();
+    } else if (search !== "") {
+      const filtereditem = items.filter((item) => {
+        return item.itemName.toLowerCase().includes(search.toLowerCase());
+      });
+      setItems(filtereditem);
+    }
+  };
+
   const orderByName = async () => {
     if (toogleName) {
       try {
-        const res = await axios.get("http://localhost:3000/api/nameAsc");
+        const res = await axios.get("/api/nameAsc");
         const items = res.data;
         setItems(items);
       } catch (err) {
@@ -32,7 +47,7 @@ const Main = () => {
       }
     } else {
       try {
-        const res = await axios.get("http://localhost:3000/api/nameDesc");
+        const res = await axios.get("/api/nameDesc");
         const items = res.data;
         setItems(items);
       } catch (err) {
@@ -54,9 +69,9 @@ const Main = () => {
 
   const orderByPrice = () => {
     if (tooglePrice) {
-      items.sort((a, b) => a.price > b.price);
+      setItems(items.sort((a, b) => a.price > b.price));
     } else {
-      items.sort((a, b) => a.price < b.price);
+      setItems(items.sort((a, b) => a.price < b.price));
     }
     tooglePrice ? setPrice(false) : setPrice(true);
   };
@@ -65,24 +80,37 @@ const Main = () => {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     const currentItems = items.slice(startIndex, endIndex);
+    console.log(currentItems);
     return currentItems;
   };
 
-  const printCards = () =>
+  /* const printCards = () => {
     paginate().map((item) => <Card item={item} key={item.id} />);
+  }; */
 
   useEffect(() => {
     const getItems = async () => {
-      try {
-        const res = await axios.get("http://localhost:3000/api");
-        const items = res.data;
-        setItems(items);
-      } catch (err) {
-        console.log(err);
+      if (search !== "") {
+        try {
+          const res = await axios.get("/api/search/" + search);
+          const items = res.data;
+          setItems(items);
+        } catch (err) {
+          console.log(err);
+        }
+      } else {
+        try {
+          const res = await axios.get("/api");
+          const items = res.data;
+          console.log(items);
+          setItems(items);
+        } catch (err) {
+          console.log(err);
+        }
       }
     };
     getItems();
-  }, []);
+  }, [search]);
 
   return (
     <main>
@@ -95,9 +123,15 @@ const Main = () => {
         <AwesomeButton onPress={orderByRating}>RATING</AwesomeButton>
         <AwesomeButton onPress={orderByPrice}>PRICE</AwesomeButton>
       </section>
-      <section className="cardList">{printCards()}</section>
+      <section className="cardList">
+        {paginate().map((item) => (
+          <Card item={item} key={item.id}></Card>
+        ))}
+      </section>
       <section className="paginateButtons">
         <AwesomeButton
+          type="danger"
+          size="medium"
           onPress={() => {
             if (currentPage > 1) {
               setCurrentPage(currentPage - 1);
@@ -107,6 +141,8 @@ const Main = () => {
           prev
         </AwesomeButton>
         <AwesomeButton
+          type="danger"
+          size="medium"
           onPress={() => {
             let pages = Math.ceil(items.length / itemsPerPage);
             if (currentPage < pages) {

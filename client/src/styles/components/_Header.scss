@@ -16,6 +16,16 @@ header{
     color: bisque;
 }
 
+.searchBar{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
 header>img{
     height: 180px;
     width: 300px;
