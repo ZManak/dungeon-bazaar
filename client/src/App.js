@@ -1,16 +1,18 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-//import "./App.css";
-import Header from './components/Header/Header';
-import Main from './components/Main/Main';
-import Footer from './components/Footer/Footer';
+import Header from "./components/Header/Header";
+import Main from "./components/Main/Main";
+import Footer from "./components/Footer/Footer";
+import { searchContext } from "./context/searchContext";
 
 function App() {
+  const [search, setSearch] = React.useState("");
   return (
-     <div className="App">
+    <div className="App">
+      <searchContext.Provider value={{ search, setSearch }}>
         <Header />
         <Main />
         <Footer />
+      </searchContext.Provider>
     </div>
   );
 }
