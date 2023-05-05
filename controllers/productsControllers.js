@@ -21,11 +21,60 @@ const nameDesc = async (req, res) => {
     return res.status(400).json({ msj: err.message });
   }
 };
+
 const nameAsc = async (req, res) => {
   try {
     let items = await Product.findAll({
       include: Maker,
       order: [["itemName", "ASC"]],
+    });
+    return res.status(200).send(items);
+  } catch (err) {
+    return res.status(400).json({ msj: err.message });
+  }
+};
+
+const priceDesc = async (req, res) => {
+  try {
+    let items = await Product.findAll({
+      include: Maker,
+      order: [["price", "DESC"]],
+    });
+    return res.status(200).send(items);
+  } catch (err) {
+    return res.status(400).json({ msj: err.message });
+  }
+};
+
+const priceAsc = async (req, res) => {
+  try {
+    let items = await Product.findAll({
+      include: Maker,
+      order: [["price", "ASC"]],
+    });
+    return res.status(200).send(items);
+  } catch (err) {
+    return res.status(400).json({ msj: err.message });
+  }
+};
+
+const ratingDesc = async (req, res) => {
+  try {
+    let items = await Product.findAll({
+      include: Maker,
+      order: [["rating", "DESC"]],
+    });
+    return res.status(200).send(items);
+  } catch (err) {
+    return res.status(400).json({ msj: err.message });
+  }
+};
+
+const ratingAsc = async (req, res) => {
+  try {
+    let items = await Product.findAll({
+      include: Maker,
+      order: [["rating", "ASC"]],
     });
     return res.status(200).send(items);
   } catch (err) {
@@ -50,4 +99,13 @@ const search = async (req, res) => {
   }
 };
 
-module.exports = { getItems, nameAsc, nameDesc, search };
+module.exports = {
+  getItems,
+  nameAsc,
+  nameDesc,
+  priceAsc,
+  priceDesc,
+  ratingAsc,
+  ratingDesc,
+  search,
+};

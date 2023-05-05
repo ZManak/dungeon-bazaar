@@ -57,21 +57,55 @@ const Main = () => {
     toogleName ? setName(false) : setName(true);
   };
 
-  const orderByRating = () => {
-    if (toogleRating) {
+  const orderByRating = async () => {
+    /* if (toogleRating) {
       let ascRating = items.sort((a, b) => a.rating > b.rating);
       setItems(ascRating);
     } else {
       setItems(items.sort((a, b) => a.rating < b.rating));
     }
+    toogleRating ? setRating(false) : setRating(true); */
+    if (toogleRating) {
+      try {
+        const res = await axios.get("/api/ratingAsc");
+        const items = res.data;
+        setItems(items);
+      } catch (err) {
+        console.log(err);
+      }
+    } else {
+      try {
+        const res = await axios.get("/api/ratingDesc");
+        const items = res.data;
+        setItems(items);
+      } catch (err) {
+        console.log(err);
+      }
+    }
     toogleRating ? setRating(false) : setRating(true);
   };
 
-  const orderByPrice = () => {
+  const orderByPrice = async () => {
     if (tooglePrice) {
-      setItems(items.sort((a, b) => a.price > b.price));
+      /*  setItems(items.sort((a, b) => a.price > b.price));
     } else {
       setItems(items.sort((a, b) => a.price < b.price));
+    } */
+      try {
+        const res = await axios.get("/api/priceAsc");
+        const items = res.data;
+        setItems(items);
+      } catch (err) {
+        console.log(err);
+      }
+    } else {
+      try {
+        const res = await axios.get("/api/priceDesc");
+        const items = res.data;
+        setItems(items);
+      } catch (err) {
+        console.log(err);
+      }
     }
     tooglePrice ? setPrice(false) : setPrice(true);
   };
@@ -119,9 +153,9 @@ const Main = () => {
         <h4>Order by:</h4>
       </div>
       <section className="orderButtons">
-        <AwesomeButton onPress={() => orderByName}>NAME</AwesomeButton>
-        <AwesomeButton onPress={() => orderByRating}>RATING</AwesomeButton>
-        <AwesomeButton onPress={() => orderByPrice}>PRICE</AwesomeButton>
+        <AwesomeButton onPress={orderByName}>NAME</AwesomeButton>
+        <AwesomeButton onPress={orderByRating}>RATING</AwesomeButton>
+        <AwesomeButton onPress={orderByPrice}>PRICE</AwesomeButton>
       </section>
       <section className="cardList">
         {paginate().map((item) => (
