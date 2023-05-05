@@ -119,9 +119,9 @@ const Main = () => {
         <h4>Order by:</h4>
       </div>
       <section className="orderButtons">
-        <AwesomeButton onPress={orderByName}>NAME</AwesomeButton>
-        <AwesomeButton onPress={orderByRating}>RATING</AwesomeButton>
-        <AwesomeButton onPress={orderByPrice}>PRICE</AwesomeButton>
+        <AwesomeButton onPress={() => orderByName}>NAME</AwesomeButton>
+        <AwesomeButton onPress={() => orderByRating}>RATING</AwesomeButton>
+        <AwesomeButton onPress={() => orderByPrice}>PRICE</AwesomeButton>
       </section>
       <section className="cardList">
         {paginate().map((item) => (
